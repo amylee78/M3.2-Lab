@@ -1,6 +1,5 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Hello World!</title>
@@ -10,166 +9,82 @@
   <link rel="shortcut icon" href="img/favicon.ico">
 </head>
 
-
 <body>
- 
-  <h1>About me!</h1>
 
-    <button  onclick="helloWorld()">Prints Hello World alert button</button>
+ <p style="text-align:right;"> <i> <strong>Dr. Eleanor Gaye</strong></i>
+   <i><br> Awesome Science faculty
+   <br> Bobtown, CA 99999,
+   <br> USA </i>  
+  </p> 
+  <address class="sender-column"><strong>Tel:</strong> <a href="Tel:123-456-7890"> 123-456-7890</a>
+   <br> <strong>Email:</strong> <a href="mailto:jim@example.com">no_reply@example.com</a> 
+  </address>
 
-  <p>
-  <div class ="profilePic">
-      
-    <div class="circle">
-      <img src="img/Profile.jpg">  
-    </div> 
-    <div class="name">
-      Amy Lee
-    </div>   
-  </div>
-  <ul>
-    <li> I graduate may 2027</li>
-    <li>No, I dont currently have a job in web Dev</li>
-    <li>No  Web Dev internship yet, but it would be cool to have one</li>
-  </ul>
-
+  <p style="text-align:left;"> <i><b><strong>Miss Eileen Dover</strong></b></i>
+   <i><br>4321 Cliff Top Edge
+   <br> Dover, CT9 XXX
+   <br> UK </i>  
   </p>
-  <hr>
-  <form id="addForm">
-    <label for="num1">Number 1:</label>
-    <input type="number" id="num1" name="num1" required>
+   <h1>Re: Eileen Dover university application</h1>
+  
+   <p> Dear Eileen,
     <br>
-    <label for="num2">Number 2:</label>
-    <input type="number" id="num2" name="num2" required>
+    <br>Thank you for your recent application to join us at the University of 
+    Awesome's science faculty to study as part
+    <br> of your <abbr title="Doctor of Philosophy">PhD</abbr> next year. I will answer your questions one by one, in the following sections.
+   </p>
+  <h2>Starting dates</h2>
+   <p>We are happy to accommodate you starting your study with us at any time, 
+    however it would suit us better if you could start at the beginning of a 
+    semester; the start dates for each one are as follows:
+   </p>
+   <ul>
+    <li>First semester: 9 September 2016</li>
+    <li>Second semester: 15 January 2017</li>
+    <li>No  Web Dev internship yet, but it would be cool to have one</li>
+   </ul>
+   <p>
+   Please let me know if this is ok, and if so which start date you would prefer.
     <br>
-    <button type="submit">Add Numbers</button>
-  </form>
+    <br>You can find more information about <a href="http://example.com">important university dates</a> on our website.
+   </p>
+   <h2>Subjects of study</h2>
+   <p>At the Awesome Science Faculty, we have a pretty open-minded research facility — 
+    as long as the subjects fall somewhere in the realm of science and technology. 
+    You seem like an intelligent, dedicated researcher, and just the kind of person 
+    we'd like to have on our team. Saying that, of the ideas you submitted we were
+     most intrigued by are as follows, in order of priority:</p>
 
-  <label id="result">Result:</label>
-
-  <hr>
-
-  <button id="jokeButton">Get a Random Joke</button>
-  <p id="joke"></p>
-
-  <hr>
-  <button id="jokeButtonTable">Get a  5 Random Jokes</button>
-  <table id="jokeTable"></table>
-
-  <script type="module" script="js/main.js">
-    import {helloWorld, add, fetchRandomJoke, fetch5RandomJokes} from './js/main.js';
-
-    // This shows how to assign a function to the window object
-    // so that it can be called from the browser console
-    window.helloWorld = helloWorld;
-
-    // This shows how to add an event listener to a button in the HTML
-    // and call a function when the button is clicked
-    const form = document.getElementById('addForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const num1 = parseFloat(document.getElementById('num1').value);
-      const num2 = parseFloat(document.getElementById('num2').value);
-      try{
-        const result = add(num1, num2);
-        document.getElementById('result').textContent = `Result: ${result}`;
-      }catch(e){
-        console.error(e);
-        document.getElementById('result').textContent = `Error: ${e.message}`;
-      }
-
-    });
-
-    // this shows how to add an event listener to a button in the HTML
-    // that calls a function that fetches a random joke from an API
-    // and displays it on the page
-    const jokebtn = document.getElementById('jokeButton');
-    const jokeresult = document.getElementById('joke');
-    jokebtn.addEventListener('click', async () => {
-      try {
-        jokeresult.textContent = 'Loading...';
-        const joke = await fetchRandomJoke();
-        document.getElementById('joke').textContent = joke;
-      } catch (e) {
-        console.error(e);
-        document.getElementById('joke').textContent = `Error: ${e.message}`;
-      }
-    });
-
-    // this shows how to add an event listener to a button in the HTML
-    // that calls a function that fetches 5 random jokes from an API
-    // and displays them in a table on the page
-    const jokeTableBtn = document.getElementById('jokeButtonTable');
-    const jokeTable = document.getElementById('jokeTable');
-    jokeTableBtn.addEventListener('click', async () => {
-      try {
-        jokeTable.textContent = 'Loading...';
-        const joke = await fetch5RandomJokes();
-        jokeTable.innerHTML = `
-              <thead>
-              <tr>
-                <th>Joke</th>
-              </tr>
-              </thead>
-              <tbody>
-              ${joke.map(j => `<tr><td>${j}</td></tr>`).join('')}
-              </tbody>
-            `
-      } catch (e) {
-        console.error(e);
-        document.getElementById('joke').textContent = `Error: ${e.message}`;
-      }
-    });
-  </script>
-
-
-<div class="the-cards">
-  <div class="flip-card1">
-    <div class="flip-card-inner1">
-      <div class="flip-card-front1">
-         <p>Flip Me!</p>
-         <p style="font-size: 80px;"> &#x1F381;</p>
-
-      </div>
-
-    <div class="flip-card-back1">
-      <h2>Oh No! you got coal!</h2>
-      <p > <img src="img/coal.png" alt="coal" class="coal"></p>
-    </div>
-  </div>
-</div>
-
-<div class="flip-card2">
-  <div class="flip-card-inner2">
-    <div class="flip-card-front2">
-       <p>Flip Me!</p>
-       <p style="font-size: 80px;"> &#x1F381;</p>
-
-    </div>
-    <div class="flip-card-back2">
-    
-      <p > Aww you got a puppy! <img src="img/pug.jpg" alt="pug" ></p>
-    </div>
-  </div>
-</div>
-
-  <div class="flip-card1">
-  <div class="flip-card-inner1">
-    <div class="flip-card-front1">
-       <p>Flip Me!</p>
-       <p style="font-size: 80px;"> &#x1F381;</p>
-
-    </div>
-    <div class="flip-card-back1">
-      <h2>Oh No! you got coal!</h2>
-      <p > <img src="img/coal.png" alt="coal" class="coal"></p>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
+  <ol type="1">
+   <li>Turning H<sub>2</sub>O into wine, and the health benefits of Resveratrol (C<sub>14</sub>H<sub>12</sub>O<sub>3</sub>.)</li>
+   <li>Measuring the effect on performance of funk bassplayers at temperatures exceeding 30°C (86°F), when the audience 
+    size exponentially increases (effect of 3 × 10<sup>3</sup> increasing to 3 × 10<sup>4</sup>.)</li>
+   <li><abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> constructs for representing musical scores.</li>
+  </ol> 
+  <p>So please can you provide more information on each of these subjects, including how long you'd expect 
+    the research to take, required staff and other resources, and anything else you think we'd need to know? Thanks.</p> 
+  <h2>Exotic dance moves</h2>
+  <p>Yes, you are right! As part of my post-doctorate work, I did study exotic tribal dances. To answer your question,
+     my favourite dances are as follows, with definitions:</p>
+<dl>
+ <dt>Polynesian chicken dance</dt>
+  <dd>A little known but very influential dance dating back as far as 300<abbr title="Before Christ">BC</abbr>, a whole village would dance around in a circle 
+  like chickens, to encourage their livestock to be "fruitful".</dd>
+ <dt>Icelandic brownian shuffle</dt>
+ <dd>Before the Icelanders developed fire as a means of getting warm, they used to practice this dance, which involved huddling close
+   together in a circle on the floor, and shuffling their bodies around in imperceptibly tiny, very rapid movements. One of my fellow 
+   students used to say that he thought this dance inspired modern styles such as Twerking.</dd>
+   <dt>Arctic robot dance</dt>
+   <dd>An interesting example of historic misinformation, English explorers in the 1960s believed to have
+     discovered a new dance style characterized by "robotic", stilted movements, being practiced by inhabitants 
+     of Northern Alaska and Canada. Later on however it was discovered that they were just moving like this because they were really cold.</dd>
+</dl>
+<p>
+  For more of my research, see my<a href="http://example.com"> exotic dance research page</a>.
+</p>
+<p>Yours sincerely,</p>
+<p>Dr Eleanor Gaye</p>
+<p>University of Awesome motto: "Be awesome to each other." <i>-- The memoirs of Bill S Preston, <abbr title="Esquire">Esq</abbr></i></p>
 </body>
 
 </html>
